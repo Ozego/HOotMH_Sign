@@ -11,12 +11,12 @@ def generate_signature(width, height, max_iter):
     for i in range(max_iter):
         mask = np.abs(Z) <= 1
         if mask.any():
-            Z+=Z*(phi+1j*phi)+np.pi
-        output+=mask/max_iter
+            Z+=Z*(0+1j*phi)+np.sqrt(5)
+        output+=mask
     return np.clip(output,0,1)
 
-width,height=256,256
-signature=generate_signature(width,height,13)
+width,height=512,512
+signature=generate_signature(width,height,69)
 plt.figure(figsize=(width/100,height/100),dpi=100)
 plt.axis('off')
 plt.imshow(signature,extent=(-1,1,-1,1))
