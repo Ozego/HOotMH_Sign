@@ -1,3 +1,13 @@
+"""
+Copyright (c) 2025 𝔖
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -14,7 +24,7 @@ def hypershpere_sign(width,height,max_iter):
     output = np.zeros(Z.shape, dtype = float)
     for i in range (2):
         Z = X + 1j * Y
-        r = 7
+        r = 6
         offset = -np.pi/r*2
         zeta = (np.pi/( .5 * r)) * np.floor( .5 * r * np.angle(Z)/np.pi + .5 * r +.5)
         spin = (np.sin(zeta)+np.cos(zeta)*1j)
@@ -31,7 +41,7 @@ def hypershpere_sign(width,height,max_iter):
 
     return np.clip(output, 0, 1)
 
-width, height = 512, 512
+width, height = 1024, 1024
 signature=hypershpere_sign(width, height, 13)
 plt.figure(figsize = (width / 100, height / 100), dpi = 100)
 plt.axis('off')
