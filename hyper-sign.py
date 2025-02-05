@@ -16,7 +16,8 @@ def hypershpere_sign(width,height,max_iter):
     Z = X + 1j * Y
     r = 6
     zeta = (np.pi/( .5 * r)) * np.floor( .5 * r * np.angle(Z)/np.pi + .5 * r +.5)  
-    Z = Z * (np.sin(zeta)+np.cos(zeta)*1j)
+    spin = (np.sin(zeta)+np.cos(zeta)*1j)
+    Z *= spin
     output = np.zeros(Z.shape, dtype = float)
     theta = np.pi * .25
     for i in range(max_iter):
@@ -26,11 +27,10 @@ def hypershpere_sign(width,height,max_iter):
         Z += (scalar + 1) * 1j 
         Z *= np.cos(theta) + np.sin(theta) * 1j
 
-#output = np.floor((np.angle(Z)/np.pi+1))
     return np.clip(output, 0, 1)
 
 width, height = 512, 512
-signature=hypershpere_sign(width, height, 69)
+signature=hypershpere_sign(width, height, 13)
 plt.figure(figsize = (width / 100, height / 100), dpi = 100)
 plt.axis('off')
 plt.imshow(signature, extent=(-1, 1, -1, 1))
